@@ -22,6 +22,8 @@ zycie_wroga = 150
 zycie_wroga1 = 300
 srebrniki = 0
 zlote_monety = 0
+poziom_gracza = 0
+punkty_doswiadczenia = 0
 
 bronie = []
 
@@ -35,6 +37,10 @@ wlasnorecznie_robiony_sok_leczniczy = 10
 mikstura_lecznicza = 0
 
 while True:
+
+    if punkty_doswiadczenia == 50:
+        poziom_gracza += 1
+        punkty_doswiadczenia == 0
 
     print("1. Atak\n-------------")
     print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/100\n-------------")
@@ -90,6 +96,7 @@ while True:
                     bonus_atak += 5
                     mikstura_lecznicza += 5
                     srebrniki += 50
+                    punkty_doswiadczenia += 50
                     miecz_ogra = True
         elif wybór1 == 2:
 
@@ -140,6 +147,7 @@ while True:
                     smoczy_sztylet = True
     elif wybór == 2:
         print("-------------")
+        print("Poziom doświadczenia gracza", nazwa, ":", poziom_gracza)
         print("Twój bonus do ataku:", bonus_atak)
         print("Życie:", zycie_gracza, "/100")
         print("Srebrniki:", srebrniki)
