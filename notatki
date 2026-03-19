@@ -1,0 +1,19 @@
+1. zrobienie Playera / Enemy
+2. player będzie klase (Rycerz, Najemnik, Wędrowca)
+3. Enemy (ogr, szkieletor, troll, gobblin)
+4. każdy player będzie miał
+- hp
+- atak
+- obrona
+- portfel
+- broń
+
+5. Enemy będzie miał
+- hp
+- atak
+- obrona
+- broń
+
+5. każdy może zrobić funkcję
+- atak
+

@@ -46,7 +46,8 @@ while True:
     print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/100\n-------------")
     print("3. Ekwipunek\n-------------")
     print("4. Sklep\n-------------")
-    print("5. Ucieczka\n-------------")
+    print("5. Gra w kości\n-------------")
+    print("6. Ucieczka\n-------------")
 
     wybór = int(input("Proszę wpisać cyfrę odpowiadającej danej opcji: "))
 
@@ -262,6 +263,16 @@ while True:
             print("-------------")
 
     elif wybór == 5:
+        print("-------------")
+        print("Wchodzisz do gry w kości...")
+        # Synchronizacja monet między RPG a grą w kości
+        gracz["monety"] = srebrniki
+        gra_w_kosci()
+        # Po powrocie synchronizujemy monety z powrotem do RPG
+        srebrniki = gracz["monety"]
+        print("-------------")
+        
+    elif wybór == 6:
         print("-------------")
         print("Uciekłeś, ale zobaczymy się jescze tak?.")
         break
