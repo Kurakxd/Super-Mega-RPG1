@@ -34,6 +34,8 @@ wilcza_wlocznia = False
 wyposazenie = []
 zbroja_ogra = False
 smoczy_pancerz = False
+kosciany_pancerz = False
+miedziana_zbroja = False
 # ------------------------
 uzywalne = []
 wlasnorecznie_robiony_sok_leczniczy = 10
@@ -52,7 +54,8 @@ while True:
     if wybór == 1:
         print("-------------\n1. Zaatakuj Ogra Marcina")
         print(
-            "2. Zatakuj Smoka Andrzeja\n!! Uwaga Smok Andrzej jest mocniejszym przeciwnikiem od Ogra Marcina !!\n-------------")
+            "2. Zatakuj Smoka Andrzeja\n!! Uwaga Smok Andrzej jest mocniejszym przeciwnikiem od Ogra Marcina "
+            "!!\n-------------")
 
         wybór1 = int(input("Kogo chcesz zaatakować?: "))
 
@@ -249,39 +252,80 @@ while True:
     elif wybór == 4:
         print("-------------")
         print("Sklep Elfa Macieja")
-        print("1.--Ząb trola--  -- +10 do ataku--  --Koszt 100 srebrników--")
-        print("2.--Wilczy pazur--  -- +8 do ataku--  --Koszt 50 srebrników--")
-        print("3.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("4.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("5.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("6.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("7.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("8.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("9.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
-        print("10. Powrót")
-        wybor_sklep = int(input("Wybierz przedmiot który chcesz zakupić: "))
+        print("1. Bronie")
+        print("2. Wyposażenie")
+        print("3. Powrót")
+        wybor_sklep = int(input("Któą kategorię chcesz odwiedzić? : "))
+
         if wybor_sklep == 1:
-            if srebrniki >= 100:
-                srebrniki -= 100
-                bonus_atak += 10
-                trolii_sztylet = True
-                print("Gratulujemy zakupu zęba trolla!")
-            else:
-                print("Nie masz wystarczająco srebrników, wpadnij następnym razem jak je zdobędziesz")
+            print("1.--Ząb trola--  -- +10 do ataku--  --Koszt 100 srebrników--")
+            print("2.--Wilczy pazur--  -- +8 do ataku--  --Koszt 50 srebrników--")
+            print("3.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("4.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("5.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("6.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("7.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("8.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("9.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("10. Powrót")
+            wybor_sklep_bronie = int(input("Wybierz opcję: "))
+            if wybor_sklep_bronie == 1:
+                if srebrniki >= 100:
+                    srebrniki -= 100
+                    bonus_atak += 10
+                    trolii_sztylet = True
+                    print("Gratulujemy zakupu zęba trolla!")
+                else:
+                    print("Nie masz wystarczająco srebrników, wpadnij następnym razem jak je zdobędziesz")
+            elif wybor_sklep_bronie == 2:
+                if srebrniki >= 50:
+                    srebrniki -= 50
+                    bonus_atak += 8
+                    wilcza_wlocznia = True
+                    print("Gratulujemy zakupu wilczego pazura!")
+                else:
+                    print("Nie masz wystarczająco srebrników, wpadnij następnym razem jak je zdobędziesz")
+            elif wybor_sklep_bronie == 10:
+                print("Do zobaczenia póżniej")
         elif wybor_sklep == 2:
-            if srebrniki >= 50:
-                srebrniki -= 50
-                bonus_atak += 8
-                wilcza_wlocznia = True
-                print("Gratulujemy zakupu wilczego pazura!")
-            else:
-                print("Nie masz wystarczająco srebrników, wpadnij następnym razem jak je zdobędziesz")
-        elif wybor_sklep == 10:
-            print("-------------")
-            print("Do zobacznie póżniej")
-            print("-------------")
+            print("1.--Kościany pancerz--  -- +15 HP--  --Koszt 35 srebrników--")
+            print("2.--Miedziana zbroja--  -- +25 HP--  --Koszt 80 srebrników--")
+            print("3.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("4.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("5.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("6.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("7.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("8.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("9.--Ząb trola--  -- +10 do ataku--  --Koszt 10 srebrników--")
+            print("10. Powrót")
+            wybor_sklep_wyposazenie = int(input("Wybierz opcję: "))
+            if wybor_sklep_wyposazenie == 1:
+                if srebrniki >= 35:
+                    srebrniki -= 35
+                    bonus_życie += 15
+                    trolii_sztylet = False
+                    print("Gratulujemy zakupu kościanego pancerza!")
+                else:
+                    print("Nie masz wystarczająco srebrników, wpadnij następnym razem jak je zdobędziesz")
+            elif wybor_sklep_wyposazenie == 2:
+                if srebrniki >= 80:
+                    srebrniki -= 80
+                    bonus_życie += 25
+                    wilcza_wlocznia = False
+                    print("Gratulujemy zakupu miedzianej zbrojii!")
+                else:
+                    print("Nie masz wystarczająco srebrników, wpadnij następnym razem jak je zdobędziesz")
+            elif wybor_sklep_wyposazenie == 10:
+                print("Do zobaczenia póżniej")
+        elif wybor_sklep == 3:
+            print("Do zobaczenia pozniej")
 
     elif wybór == 5:
+        print("Gra w kości")
+        print("1. Rozpocznij")
+        print("2. Powrót")
+
+    elif wybór == 6:
         print("-------------")
         print("Uciekłeś, ale zobaczymy się jescze tak?.")
         break
