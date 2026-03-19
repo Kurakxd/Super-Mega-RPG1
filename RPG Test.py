@@ -17,13 +17,12 @@ print("-----------------------\nWitaj w świecie magii", nazwa, " \n------------
 unik = 0
 CIOS_KRYTYCZNY = 0
 bonus_atak = 0
-zycie_gracza = 100
-zycie_wroga = 150
+bonus_życie = 0
+zycie_gracza = 100 + bonus_życie
+zycie_wroga = 1
 zycie_wroga1 = 300
 srebrniki = 0
 zlote_monety = 0
-poziom_gracza = 0
-punkty_doswiadczenia = 0
 
 bronie = []
 
@@ -32,15 +31,15 @@ smoczy_sztylet = False
 trolii_sztylet = False
 wilcza_wlocznia = False
 # ------------------------
+wyposazenie = []
+zbroja_ogra = False
+smoczy_pancerz = False
+# ------------------------
 uzywalne = []
 wlasnorecznie_robiony_sok_leczniczy = 10
 mikstura_lecznicza = 0
 
 while True:
-
-    if punkty_doswiadczenia == 50:
-        poziom_gracza += 1
-        punkty_doswiadczenia == 0
 
     print("1. Atak\n-------------")
     print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/100\n-------------")
@@ -52,14 +51,16 @@ while True:
 
     if wybór == 1:
         print("-------------\n1. Zaatakuj Ogra Marcina")
-        print("2. Zatakuj Smoka Andrzeja\n!! Uwaga Smok Andrzej jest mocniejszym przeciwnikiem od Ogra Marcina !!\n-------------")
+        print(
+            "2. Zatakuj Smoka Andrzeja\n!! Uwaga Smok Andrzej jest mocniejszym przeciwnikiem od Ogra Marcina !!\n-------------")
 
         wybór1 = int(input("Kogo chcesz zaatakować?: "))
 
         if wybór1 == 1:
 
             if zycie_wroga <= 0:
-                print("----------------------------------\nOgr Marcin został już pokonany.\n----------------------------------")
+                print(
+                    "----------------------------------\nOgr Marcin został już pokonany.\n----------------------------------")
             else:
                 CIOS_KRYTYCZNY = random.randint(1, 5)
                 if CIOS_KRYTYCZNY == 2:
@@ -72,13 +73,16 @@ while True:
 
                 if atak_wroga == 1:
                     obrazenia1 = random.randint(5, 10)
-                    print("----------------------------------\nOgr Marcin uderzył cię swoim mieczem i zadał ci", obrazenia1, "\n----------------------------------")
+                    print("----------------------------------\nOgr Marcin uderzył cię swoim mieczem i zadał ci",
+                          obrazenia1, "\n----------------------------------")
                 elif atak_wroga == 2:
                     obrazenia1 = random.randint(1, 6)
-                    print("----------------------------------\nOgr Marcin kopnął cię i zadał ci", obrazenia1, "\n----------------------------------")
+                    print("----------------------------------\nOgr Marcin kopnął cię i zadał ci", obrazenia1,
+                          "\n----------------------------------")
                 elif atak_wroga == 3:
                     obrazenia1 = random.randint(5, 15)
-                    print("----------------------------------\nOgr Marcin rzucił w ciebie głazem i zadał ci", obrazenia1, "\n----------------------------------")
+                    print("----------------------------------\nOgr Marcin rzucił w ciebie głazem i zadał ci",
+                          obrazenia1, "\n----------------------------------")
                 zycie_wroga -= obrazenia
                 zycie_gracza -= obrazenia1
                 print("-------------\nZaatakowałeś Ogra Marcina i zadałeś mu", obrazenia, "HP")
@@ -93,11 +97,12 @@ while True:
                     print("Gratulacje,pokonałeś Ogra Marcina, oraz zdobyłeś jego miecz który daje +5 do ataku!")
                     print("Znalazłeś również dziwne małe metalowe koło w kolorze świecącym szarym")
                     print("----------------------------------")
+                    bonus_życie += 10
                     bonus_atak += 5
                     mikstura_lecznicza += 5
                     srebrniki += 50
-                    punkty_doswiadczenia += 50
                     miecz_ogra = True
+                    zbroja_ogra = True
         elif wybór1 == 2:
 
             if zycie_wroga1 <= 0:
@@ -142,12 +147,14 @@ while True:
                     print("WOW!! Pokonałeś Smoka Andzreja, wygląda na to że jednak coś ppotrafisz.")
                     print("Przy smoku znalazłeś smoczy ząb i stworzyłeś z niego sztylet ze smoczego zęba. Nieźle!")
                     print("----------------------------------")
+                    bonus_życie += 20
                     bonus_atak += 15
                     srebrniki += 100
                     smoczy_sztylet = True
+                    smoczy_pancerz = True
     elif wybór == 2:
         print("-------------")
-        print("Poziom doświadczenia gracza", nazwa, ":", poziom_gracza)
+        print("Poziom doświadczenia gracza", nazwa, ":")
         print("Twój bonus do ataku:", bonus_atak)
         print("Życie:", zycie_gracza, "/100")
         print("Srebrniki:", srebrniki)
@@ -156,7 +163,8 @@ while True:
     elif wybór == 3:
         print("Ekwipunek gracza", nazwa, ":")
         print("1. Bronie")
-        print("2. Używalne")
+        print("2. Wyposażenie")
+        print("3. Używalne")
 
         wybor_eq = int(input("Wybierz którą kategorie ekwipunku chcesz zobaczyć: "))
         if wybor_eq == 1:
@@ -177,6 +185,18 @@ while True:
                 print("Brak przedmiotów w tek kategorii")
                 print("-------------")
         if wybor_eq == 2:
+            print("Wyposażenie")
+            if zbroja_ogra == True:
+                print("Zbroja ogra + 10 do HP")
+            if smoczy_pancerz == True:
+                print("Smoczy pancerz + 20 do HP")
+            if zbroja_ogra == False:
+                smoczy_pancerz == False
+                print("-------------")
+                print("Brak przedmiotów w tek kategorii")
+                print("-------------")
+
+        if wybor_eq == 3:
             print("Używalne: ")
 
             print("-------------")
@@ -188,7 +208,7 @@ while True:
             wybór2 = int(input("Co chcesz wypić?: "))
 
             if wybór2 == 1:
-                if zycie_gracza == 100:
+                if zycie_gracza == 100 + bonus_życie:
                     print("-------------")
                     print("Twój bohater ma już zapełniony pasek zdrowia")
                     print("-------------")
@@ -198,8 +218,8 @@ while True:
                     print("Wypiłeś własnoręcznie robiony sok leczniczy, i zdobyłeś", leczenie, "HP")
                     wlasnorecznie_robiony_sok_leczniczy -= 1
                     zycie_gracza += leczenie
-                    if zycie_gracza > 100:
-                        zycie_gracza = 100
+                    if zycie_gracza > 100 + bonus_życie:
+                        zycie_gracza = 100 + bonus_życie
                     print("Twoje życie", zycie_gracza)
                     print("-------------")
             elif wybór2 == 2:
@@ -209,7 +229,7 @@ while True:
                     print("Jesze nie znalazłeś tego przedmiotu.")
                     print("-------------")
                 else:
-                    if zycie_gracza == 100:
+                    if zycie_gracza == 100 + bonus_życie:
                         print("-------------")
                         print("Twój bohater ma już zapełniony pasek zdrowia")
                         print("-------------")
@@ -219,8 +239,8 @@ while True:
                         print("Wypiłeś miksturę leczniczą, i zdobyłeś", leczenie1, "HP")
                         mikstura_lecznicza -= 1
                         zycie_gracza += leczenie1
-                        if zycie_gracza > 100:
-                            zycie_gracza = 100
+                        if zycie_gracza > 100 + bonus_życie:
+                            zycie_gracza = 100 + bonus_życie
                         print("Twoje życie", zycie_gracza)
                         print("-------------")
             elif wybór2 == 3:
