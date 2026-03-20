@@ -21,7 +21,7 @@ bonus_życie = 0
 zycie_gracza = 100 + bonus_życie
 zycie_wroga = 1
 zycie_wroga1 = 300
-srebrniki = 0
+srebrniki = 10
 zlote_monety = 0
 
 bronie = []
@@ -47,7 +47,8 @@ while True:
     print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/100\n-------------")
     print("3. Ekwipunek\n-------------")
     print("4. Sklep\n-------------")
-    print("5. Ucieczka\n-------------")
+    print("5. Gra w kości\n-------------")
+    print("6. Ucieczka\n-------------")
 
     wybór = int(input("Proszę wpisać cyfrę odpowiadającej danej opcji: "))
 
@@ -321,10 +322,58 @@ while True:
             print("Do zobaczenia pozniej")
 
     elif wybór == 5:
-        print("Gra w kości")
-        print("1. Rozpocznij")
+        print("Gra w kości u Handlarza Marka")
+        print("1. Rozpocznij\n !!! Uwaga klikając Rozpocznij automatycznie zostanie pobrane 10 srebrników z twojego konta !!!")
         print("2. Powrót")
-
+        gra_w_kosci_wybor = int(input("Wybierz opcje: "))
+        if gra_w_kosci_wybor == 1:
+            if srebrniki >= 10:
+                srebrniki -= 10
+                wybór_handlarza = random.randint(1, 6)
+                print("Zasady gry: \n Ty wybierasz ilość oczek na kostce i zapisujesz tą liczbę aby wygrać kostka którą rzucę musi wylądować twoją liczbą do góry.")
+                print("Jeżeli przegrasz jak już wiesz tracisz swoje 10 srebrników, jeżeli wygrasz odzyskujesz 10 srebrników i zyskujesz 10 ekstra.")
+                print("---------------------------------------------------------------------------------")
+                print("Wybierz liczbę:\n1.-1-\n2.-2-\n3.-3-\n4.-4-\n5.-5-\n6.-6-")
+                wybór_kosci = int(input("Wybierz cyfrę:"))
+                print(wybór_handlarza)
+                if wybór_kosci == 1:
+                    if wybór_handlarza == 1:
+                        print("Ajjjj niestety przegrałeś")
+                    else:
+                        print("Gratulacje wygrałeś!")
+                        srebrniki += 20
+                if wybór_kosci == 2:
+                    if wybór_handlarza == 2:
+                        print("Ajjjj niestety przegrałeś")
+                    else:
+                        print("Gratulacje wygrałeś!")
+                        srebrniki += 20
+                if wybór_kosci == 3:
+                    if wybór_handlarza == 3:
+                        print("Ajjjj niestety przegrałeś")
+                    else:
+                        print("Gratulacje wygrałeś!")
+                        srebrniki += 20
+                if wybór_kosci == 4:
+                    if wybór_handlarza == 4:
+                        print("Ajjjj niestety przegrałeś")
+                    else:
+                        print("Gratulacje wygrałeś!")
+                        srebrniki += 20
+                if wybór_kosci == 5:
+                    if wybór_handlarza == 5:
+                        print("Ajjjj niestety przegrałeś")
+                    else:
+                        print("Gratulacje wygrałeś!")
+                        srebrniki += 20
+                if wybór_kosci == 6:
+                    if wybór_handlarza == 6:
+                        print("Ajjjj niestety przegrałeś")
+                    else:
+                        print("Gratulacje wygrałeś!")
+                        srebrniki += 20
+            else:
+                print("Nie masz wystarczająco srebrników wróć następnym razem jak je uzbierasz")
     elif wybór == 6:
         print("-------------")
         print("Uciekłeś, ale zobaczymy się jescze tak?.")
