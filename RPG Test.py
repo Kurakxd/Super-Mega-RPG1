@@ -181,10 +181,7 @@ while True:
                 print("Trolli sztylet +10 ataku")
             if wilcza_wlocznia == True:
                 print("Wilcza włócznia +8 ataku")
-            if miecz_ogra == False:
-                smoczy_sztylet == False
-                trolii_sztylet == False
-                wilcza_wlocznia == False
+            if miecz_ogra == False and smoczy_sztylet == False and trolii_sztylet == False and wilcza_wlocznia == False:
                 print("-------------")
                 print("Brak przedmiotów w tek kategorii")
                 print("-------------")
@@ -194,8 +191,7 @@ while True:
                 print("Zbroja ogra + 10 do HP")
             if smoczy_pancerz == True:
                 print("Smoczy pancerz + 20 do HP")
-            if zbroja_ogra == False:
-                smoczy_pancerz == False
+            if zbroja_ogra == False and smoczy_pancerz == False:
                 print("-------------")
                 print("Brak przedmiotów w tek kategorii")
                 print("-------------")
@@ -336,44 +332,18 @@ while True:
                 print("Wybierz liczbę:\n1.-1-\n2.-2-\n3.-3-\n4.-4-\n5.-5-\n6.-6-")
                 wybór_kosci = int(input("Wybierz cyfrę:"))
                 print(wybór_handlarza)
-                if wybór_kosci == 1:
-                    if wybór_handlarza == 1:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 2:
-                    if wybór_handlarza == 2:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 3:
-                    if wybór_handlarza == 3:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 4:
-                    if wybór_handlarza == 4:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 5:
-                    if wybór_handlarza == 5:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 6:
-                    if wybór_handlarza == 6:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
+                if wybór_kosci == wybór_handlarza:
+                    print("Gratulacje wygrałeś i zdobywasz 20 srebrników")
+                    srebrniki += 20
+                else:
+                    print("Ajjj niestety przegrałeś.")
             else:
                 print("Nie masz wystarczająco srebrników wróć następnym razem jak je uzbierasz")
+        elif gra_w_kosci_wybor == 2:
+            print("-------------")
+            print("Do zobacznie póżniej.")
+            print("-------------")
+
     elif wybór == 6:
         print("-------------")
         print("Uciekłeś, ale zobaczymy się jescze tak?.")
