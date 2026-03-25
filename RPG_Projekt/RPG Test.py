@@ -9,10 +9,6 @@ print("3.---STWÓRZ BOHATERA---")
 print("-----------------------")
 stworz_bohatera = int(input("Wybierz zapis na którym chcesz grać: "))
 print("-----------------------")
-print("--WYBIERZ KLASĘ SWOJEJ POSTACI--")
-print("1.---STWÓRZ BOHATERA---")
-print("2.---STWÓRZ BOHATERA---")
-print("3.---STWÓRZ BOHATERA---")
 
 nazwa = input("Nazwij swojego bohatera: ")
 
@@ -31,6 +27,16 @@ zycie_wroga1 = 300
 srebrniki = 10
 zlote_monety = 0
 
+statystyki = []
+
+klamca_zadanie_z_ogrem = False
+# ------------------------
+zadania = []
+
+zadanie_z_ogrem = False
+zadanie_z_ogrem_aktywne = True
+anty_zadanie_z_ogrem_opcja2 = False
+# ------------------------
 bronie = []
 
 miecz_ogra = False
@@ -54,121 +60,143 @@ while True:
         punkty_doswiadczenia -= 50
         do_nastepnego_poziomu = 100
 
-    print("1. Atak\n-------------")
+    print("---MIASTECZKO BOGO---")
+    print("1. Wyprawa\n-------------")
     print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/ 100\n-------------")
     print("3. Ekwipunek\n-------------")
-    print("4. Sklep\n-------------")
-    print("5. Gra w kości\n-------------")
+    print("4. Sklep Elfa Macieja\n-------------")
+    print("5. Centrum gier Handlarza Marka\n-------------")
     print("6. Ucieczka\n-------------")
 
     wybór = int(input("Proszę wpisać cyfrę odpowiadającej danej opcji: "))
 
     if wybór == 1:
-        print("-------------\n1. Zaatakuj Ogra Marcina")
-        print(
-            "2. Zatakuj Smoka Andrzeja\n!! Uwaga Smok Andrzej jest mocniejszym przeciwnikiem od Ogra Marcina "
-            "!!\n-------------")
+        print("1. Zaatakuj postać")
+        print("2. Eksploruj świat")
+        print("3. Powrót")
 
-        wybór1 = int(input("Kogo chcesz zaatakować?: "))
+        wybór_wyprawa = int(input("Wybierz opcje: "))
 
-        if wybór1 == 1:
+        if wybór_wyprawa == 1:
+            print("-------------\n1. Zaatakuj Ogra Marcina")
+            print(
+                "2. Zatakuj Smoka Andrzeja\n!! Uwaga Smok Andrzej jest mocniejszym przeciwnikiem od Ogra Marcina "
+                "!!\n-------------")
 
-            if zycie_wroga <= 0:
-                print(
-                    "----------------------------------\nOgr Marcin został już pokonany.\n----------------------------------")
-            else:
-                CIOS_KRYTYCZNY = random.randint(1, 5)
-                if CIOS_KRYTYCZNY == 2:
-                    CIOS_KRYTYCZNY += 5
-                else:
-                    CIOS_KRYTYCZNY = 0
-                obrazenia = random.randint(1, 10) + bonus_atak + CIOS_KRYTYCZNY
-                print("DEBUG bonus:", bonus_atak)
-                atak_wroga = random.randint(1, 3)
+            wybór1 = int(input("Kogo chcesz zaatakować?: "))
 
-                if atak_wroga == 1:
-                    obrazenia1 = random.randint(5, 10)
-                    print("----------------------------------\nOgr Marcin uderzył cię swoim mieczem i zadał ci",
-                          obrazenia1, "\n----------------------------------")
-                elif atak_wroga == 2:
-                    obrazenia1 = random.randint(1, 6)
-                    print("----------------------------------\nOgr Marcin kopnął cię i zadał ci", obrazenia1,
-                          "\n----------------------------------")
-                elif atak_wroga == 3:
-                    obrazenia1 = random.randint(5, 15)
-                    print("----------------------------------\nOgr Marcin rzucił w ciebie głazem i zadał ci",
-                          obrazenia1, "\n----------------------------------")
-                zycie_wroga -= obrazenia
-                zycie_gracza -= obrazenia1
-                print("-------------\nZaatakowałeś Ogra Marcina i zadałeś mu", obrazenia, "HP")
-                print("CIOS KRYTYCZNY!:", CIOS_KRYTYCZNY)
-                print("UNIK!:", unik)
-                if unik == 1:
-                    print("Uniknąłeś ataku")
-                print("Życie Ogra Marcina:", zycie_wroga)
-                print("-------------")
+            if wybór1 == 1:
+
                 if zycie_wroga <= 0:
-                    print("----------------------------------")
-                    print("Gratulacje,pokonałeś Ogra Marcina, oraz zdobyłeś jego miecz który daje +5 do ataku!")
-                    print("Znalazłeś również dziwne małe metalowe koło w kolorze świecącym szarym")
-                    print("----------------------------------")
-                    punkty_doswiadczenia += 50
-                    bonus_życie += 10
-                    bonus_atak += 5
-                    mikstura_lecznicza += 5
-                    srebrniki += 50
-                    miecz_ogra = True
-                    zbroja_ogra = True
-        elif wybór1 == 2:
-
-            if zycie_wroga1 <= 0:
-                print("----------------------------------")
-                print("Smok Andrzej został już pokonany.")
-                print("----------------------------------")
-            else:
-                CIOS_KRYTYCZNY = random.randint(1, 5)
-                if CIOS_KRYTYCZNY == 2:
-                    CIOS_KRYTYCZNY += 5
+                    print(
+                        "----------------------------------\nOgr Marcin został już pokonany.\n----------------------------------")
                 else:
-                    CIOS_KRYTYCZNY = 0
-                obrazenia = random.randint(1, 10) + bonus_atak + CIOS_KRYTYCZNY
-                print("DEBUG bonus:", bonus_atak)
+                    CIOS_KRYTYCZNY = random.randint(1, 5)
+                    if CIOS_KRYTYCZNY == 2:
+                        CIOS_KRYTYCZNY += 5
+                    else:
+                        CIOS_KRYTYCZNY = 0
+                    obrazenia = random.randint(1, 10) + bonus_atak + CIOS_KRYTYCZNY
+                    print("DEBUG bonus:", bonus_atak)
+                    atak_wroga = random.randint(1, 3)
 
-                atak_wroga = random.randint(1, 3)
+                    if atak_wroga == 1:
+                        obrazenia1 = random.randint(5, 10)
+                        print("----------------------------------\nOgr Marcin uderzył cię swoim mieczem i zadał ci",
+                            obrazenia1, "\n----------------------------------")
+                    elif atak_wroga == 2:
+                        obrazenia1 = random.randint(1, 6)
+                        print("----------------------------------\nOgr Marcin kopnął cię i zadał ci", obrazenia1,
+                            "\n----------------------------------")
+                    elif atak_wroga == 3:
+                        obrazenia1 = random.randint(5, 15)
+                        print("----------------------------------\nOgr Marcin rzucił w ciebie głazem i zadał ci",
+                        obrazenia1, "\n----------------------------------")
+                    zycie_wroga -= obrazenia
+                    zycie_gracza -= obrazenia1
+                    print("-------------\nZaatakowałeś Ogra Marcina i zadałeś mu", obrazenia, "HP")
+                    print("CIOS KRYTYCZNY!:", CIOS_KRYTYCZNY)
+                    print("UNIK!:", unik)
+                    if unik == 1:
+                        print("Uniknąłeś ataku")
+                    print("Życie Ogra Marcina:", zycie_wroga)
+                    print("-------------")
+                    if zycie_wroga <= 0:
+                        print("----------------------------------")
+                        print("Gratulacje,pokonałeś Ogra Marcina, oraz zdobyłeś jego miecz który daje +5 do ataku!")
+                        print("Znalazłeś również dziwne małe metalowe koło w kolorze świecącym szarym")
+                        print("----------------------------------")
+                        punkty_doswiadczenia += 50
+                        bonus_życie += 10
+                        bonus_atak += 5
+                        mikstura_lecznicza += 5
+                        srebrniki += 50
+                        miecz_ogra = True
+                        zbroja_ogra = True
+            elif wybór1 == 2:
 
-                if atak_wroga == 1:
-                    obrazenia1 = random.randint(10, 15)
-                    print("----------------------------------")
-                    print("Smok Andrzej uderzył cię swoim swoim ogonem i zadał ci", obrazenia1)
-                    print("----------------------------------")
-                elif atak_wroga == 2:
-                    obrazenia1 = random.randint(4, 10)
-                    print("----------------------------------")
-                    print("Smok Andrzej kopnął cię i zadał ci", obrazenia1)
-                    print("----------------------------------")
-                elif atak_wroga == 3:
-                    obrazenia1 = random.randint(20, 35)
-                    print("----------------------------------")
-                    print("Smok Andrzej ziewnął na cibie ogniem i zadał ci", obrazenia1)
-                    print("----------------------------------")
-                zycie_wroga1 -= obrazenia
-                zycie_gracza -= obrazenia1
-                print("-------------")
-                print("Zaatakowałeś Smoka Andrzeja i zadałeś mu", obrazenia, "HP")
-                print("CIOS KRYTYCZNY!:", CIOS_KRYTYCZNY)
-                print("Życie Smok Andrzeja:", zycie_wroga1)
-                print("-------------")
                 if zycie_wroga1 <= 0:
                     print("----------------------------------")
-                    print("WOW!! Pokonałeś Smoka Andzreja, wygląda na to że jednak coś ppotrafisz.")
-                    print("Przy smoku znalazłeś smoczy ząb i stworzyłeś z niego sztylet ze smoczego zęba. Nieźle!")
+                    print("Smok Andrzej został już pokonany.")
                     print("----------------------------------")
-                    punkty_doswiadczenia += 100
-                    bonus_życie += 20
-                    bonus_atak += 15
-                    srebrniki += 100
-                    smoczy_sztylet = True
-                    smoczy_pancerz = True
+                else:
+                    CIOS_KRYTYCZNY = random.randint(1, 5)
+                    if CIOS_KRYTYCZNY == 2:
+                        CIOS_KRYTYCZNY += 5
+                    else:
+                        CIOS_KRYTYCZNY = 0
+                    obrazenia = random.randint(1, 10) + bonus_atak + CIOS_KRYTYCZNY
+                    print("DEBUG bonus:", bonus_atak)
+
+                    atak_wroga = random.randint(1, 3)
+
+                    if atak_wroga == 1:
+                        obrazenia1 = random.randint(10, 15)
+                        print("----------------------------------")
+                        print("Smok Andrzej uderzył cię swoim swoim ogonem i zadał ci", obrazenia1)
+                        print("----------------------------------")
+                    elif atak_wroga == 2:
+                        obrazenia1 = random.randint(4, 10)
+                        print("----------------------------------")
+                        print("Smok Andrzej kopnął cię i zadał ci", obrazenia1)
+                        print("----------------------------------")
+                    elif atak_wroga == 3:
+                        obrazenia1 = random.randint(20, 35)
+                        print("----------------------------------")
+                        print("Smok Andrzej ziewnął na cibie ogniem i zadał ci", obrazenia1)
+                        print("----------------------------------")
+                    zycie_wroga1 -= obrazenia
+                    zycie_gracza -= obrazenia1
+                    print("-------------")
+                    print("Zaatakowałeś Smoka Andrzeja i zadałeś mu", obrazenia, "HP")
+                    print("CIOS KRYTYCZNY!:", CIOS_KRYTYCZNY)
+                    print("Życie Smok Andrzeja:", zycie_wroga1)
+                    print("-------------")
+                    if zycie_wroga1 <= 0:
+                        print("----------------------------------")
+                        print("WOW!! Pokonałeś Smoka Andzreja, wygląda na to że jednak coś ppotrafisz.")
+                        print("Przy smoku znalazłeś smoczy ząb i stworzyłeś z niego sztylet ze smoczego zęba. Nieźle!")
+                        print("----------------------------------")
+                        punkty_doswiadczenia += 100
+                        bonus_życie += 20
+                        bonus_atak += 15
+                        srebrniki += 100
+                        smoczy_sztylet = True
+                        smoczy_pancerz = True
+        elif wybór_wyprawa == 2:
+                print("1. Zacznij eksplorować")
+                print("2. Wróć do miasteczka Bogo")
+                wybór_exsploracja = int(input("Wybierz opcję: "))
+                if wybór_exsploracja == 1:
+                    print("Jeje")
+                else:
+                    print("-------------")
+                    print("Wróciłeś do miasteczka Bogo")
+                    print("-------------")
+        elif wybór_wyprawa == 3:
+            print("-------------")
+            print("Wróciłeś do miasteczka Bogo")
+            print("-------------")
     elif wybór == 2:
         print("-------------")
         print("Poziom doświadczenia gracza", nazwa, ":", poziom_doswiadczenia)
@@ -265,7 +293,8 @@ while True:
         print("Sklep Elfa Macieja")
         print("1. Bronie")
         print("2. Wyposażenie")
-        print("3. Powrót")
+        print("3. Zadanie")
+        print("4. Powrót")
         wybor_sklep = int(input("Któą kategorię chcesz odwiedzić? : "))
 
         if wybor_sklep == 1:
@@ -329,6 +358,51 @@ while True:
             elif wybor_sklep_wyposazenie == 10:
                 print("Do zobaczenia póżniej")
         elif wybor_sklep == 3:
+            if zadanie_z_ogrem_aktywne == True:
+                if zadanie_z_ogrem == True:
+                    print("Witaj z powrotem! Ukończyłeś swoje zadanie?")
+                    print("1. Tak")
+                    print("2. Nie")
+                    print("3. Daj mi jescze chwilę")
+                    zadanie_z_ogrem_CH = int(input("Wybierz opcję: "))
+                    if zadanie_z_ogrem_CH == 1:
+                        if zycie_wroga <= 0:
+                            print("Wiedziałem, że dasz radę. Proszę o to twoje 50 srebrników.")
+                            srebrniki += 50
+                            zadanie_z_ogrem = False
+                            anty_zadanie_z_ogrem_opcja2 = True
+                        if zycie_wroga >= 0:
+                            print("Wiedziałem, że dasz radę. Proszę o to twoje 50 srebrników.")
+                            srebrniki += 50
+                            zadanie_z_ogrem = False
+                            klamca_zadanie_z_ogrem = True
+                            anty_zadanie_z_ogrem_opcja2 = True
+                    if zadanie_z_ogrem_CH == 2:
+                        print("Nie żeby coś ale jak tego szybko nie zrobisz to nagroda przepadnie więc miej to na uwadze.")
+                if zycie_wroga >= 0:
+                    print("Okej chcesz wyzwania i zgarnąć troche srebrników? W takim razie pokonaj dla mnie Ogra Marcina.")
+                    print("Płace 50 srebrników, serio dobra sumka")
+                    print("-------------")
+                    print("1. Przyjmij")
+                    print("2. Wróć do tego póżniej")
+                    wybor_zadanie = int(input("Wybierz opcję: "))
+                    if wybor_zadanie == 1:
+                        print("-------------")
+                        print("No i świetnie wróć do mnie jak skończysz")
+                        zadanie_z_ogrem = True
+                    elif wybor_zadanie == 2:
+                        print("-------------")
+                        print("Dobrze, ale nie gwarantuje, że oferta będzie jak wrócisz.")
+                if zycie_wroga <= 0 and anty_zadanie_z_ogrem_opcja2 == False:
+                    print("-------------")
+                    print("Hmmm wykonałeś zadanie które miałem komuś powierzyć, słuchaj ponieważ mam troche ich masz w nagrodę 25 srebrników.")
+                    print("Widzę też, że tawrda z ciebie sztuka. Słuchaj zaglądaj do mnie czasami to może będe miał kolejne zadanie.")
+                    print("-------------")
+                    print("1. Powrót")
+                    powrot_zadanie = int(input("Wybierz opcję: "))
+            else:
+                print("Obecnie nie mam żadnych zadań.")
+        elif wybor_sklep == 4:
             print("Do zobaczenia pozniej")
 
     elif wybór == 5:
