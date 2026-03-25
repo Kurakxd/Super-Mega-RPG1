@@ -9,11 +9,18 @@ print("3.---STWÓRZ BOHATERA---")
 print("-----------------------")
 stworz_bohatera = int(input("Wybierz zapis na którym chcesz grać: "))
 print("-----------------------")
+print("--WYBIERZ KLASĘ SWOJEJ POSTACI--")
+print("1.---STWÓRZ BOHATERA---")
+print("2.---STWÓRZ BOHATERA---")
+print("3.---STWÓRZ BOHATERA---")
 
 nazwa = input("Nazwij swojego bohatera: ")
 
 print("-----------------------\nWitaj w świecie magii", nazwa, " \n-----------------------")
 
+do_nastepnego_poziomu = 50
+punkty_doswiadczenia = 0
+poziom_doswiadczenia = 0
 unik = 0
 CIOS_KRYTYCZNY = 0
 bonus_atak = 0
@@ -42,9 +49,13 @@ wlasnorecznie_robiony_sok_leczniczy = 10
 mikstura_lecznicza = 0
 
 while True:
+    if punkty_doswiadczenia >= do_nastepnego_poziomu:
+        poziom_doswiadczenia += 1
+        punkty_doswiadczenia -= 50
+        do_nastepnego_poziomu = 100
 
     print("1. Atak\n-------------")
-    print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/100\n-------------")
+    print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/ 100\n-------------")
     print("3. Ekwipunek\n-------------")
     print("4. Sklep\n-------------")
     print("5. Gra w kości\n-------------")
@@ -101,6 +112,7 @@ while True:
                     print("Gratulacje,pokonałeś Ogra Marcina, oraz zdobyłeś jego miecz który daje +5 do ataku!")
                     print("Znalazłeś również dziwne małe metalowe koło w kolorze świecącym szarym")
                     print("----------------------------------")
+                    punkty_doswiadczenia += 50
                     bonus_życie += 10
                     bonus_atak += 5
                     mikstura_lecznicza += 5
@@ -151,6 +163,7 @@ while True:
                     print("WOW!! Pokonałeś Smoka Andzreja, wygląda na to że jednak coś ppotrafisz.")
                     print("Przy smoku znalazłeś smoczy ząb i stworzyłeś z niego sztylet ze smoczego zęba. Nieźle!")
                     print("----------------------------------")
+                    punkty_doswiadczenia += 100
                     bonus_życie += 20
                     bonus_atak += 15
                     srebrniki += 100
@@ -158,7 +171,8 @@ while True:
                     smoczy_pancerz = True
     elif wybór == 2:
         print("-------------")
-        print("Poziom doświadczenia gracza", nazwa, ":")
+        print("Poziom doświadczenia gracza", nazwa, ":", poziom_doswiadczenia)
+        print("Punkty doświadczenia gracza", nazwa, ":", punkty_doswiadczenia)
         print("Twój bonus do ataku:", bonus_atak)
         print("Życie:", zycie_gracza, "/100")
         print("Srebrniki:", srebrniki)
@@ -181,10 +195,7 @@ while True:
                 print("Trolli sztylet +10 ataku")
             if wilcza_wlocznia == True:
                 print("Wilcza włócznia +8 ataku")
-            if miecz_ogra == False:
-                smoczy_sztylet == False
-                trolii_sztylet == False
-                wilcza_wlocznia == False
+            if miecz_ogra == False and smoczy_sztylet == False and trolii_sztylet == False and wilcza_wlocznia == False:
                 print("-------------")
                 print("Brak przedmiotów w tek kategorii")
                 print("-------------")
@@ -194,8 +205,7 @@ while True:
                 print("Zbroja ogra + 10 do HP")
             if smoczy_pancerz == True:
                 print("Smoczy pancerz + 20 do HP")
-            if zbroja_ogra == False:
-                smoczy_pancerz == False
+            if zbroja_ogra == False and smoczy_pancerz == False:
                 print("-------------")
                 print("Brak przedmiotów w tek kategorii")
                 print("-------------")
@@ -336,44 +346,18 @@ while True:
                 print("Wybierz liczbę:\n1.-1-\n2.-2-\n3.-3-\n4.-4-\n5.-5-\n6.-6-")
                 wybór_kosci = int(input("Wybierz cyfrę:"))
                 print(wybór_handlarza)
-                if wybór_kosci == 1:
-                    if wybór_handlarza == 1:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 2:
-                    if wybór_handlarza == 2:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 3:
-                    if wybór_handlarza == 3:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 4:
-                    if wybór_handlarza == 4:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 5:
-                    if wybór_handlarza == 5:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
-                if wybór_kosci == 6:
-                    if wybór_handlarza == 6:
-                        print("Ajjjj niestety przegrałeś")
-                    else:
-                        print("Gratulacje wygrałeś!")
-                        srebrniki += 20
+                if wybór_kosci == wybór_handlarza:
+                    print("Gratulacje wygrałeś i zdobywasz 20 srebrników")
+                    srebrniki += 20
+                else:
+                    print("Ajjj niestety przegrałeś.")
             else:
                 print("Nie masz wystarczająco srebrników wróć następnym razem jak je uzbierasz")
+        elif gra_w_kosci_wybor == 2:
+            print("-------------")
+            print("Do zobacznie póżniej.")
+            print("-------------")
+
     elif wybór == 6:
         print("-------------")
         print("Uciekłeś, ale zobaczymy się jescze tak?.")
