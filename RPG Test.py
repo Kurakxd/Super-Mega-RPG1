@@ -9,11 +9,18 @@ print("3.---STWÓRZ BOHATERA---")
 print("-----------------------")
 stworz_bohatera = int(input("Wybierz zapis na którym chcesz grać: "))
 print("-----------------------")
+print("--WYBIERZ KLASĘ SWOJEJ POSTACI--")
+print("1.---STWÓRZ BOHATERA---")
+print("2.---STWÓRZ BOHATERA---")
+print("3.---STWÓRZ BOHATERA---")
 
 nazwa = input("Nazwij swojego bohatera: ")
 
 print("-----------------------\nWitaj w świecie magii", nazwa, " \n-----------------------")
 
+do_nastepnego_poziomu = 50
+punkty_doswiadczenia = 0
+poziom_doswiadczenia = 0
 unik = 0
 CIOS_KRYTYCZNY = 0
 bonus_atak = 0
@@ -42,9 +49,13 @@ wlasnorecznie_robiony_sok_leczniczy = 10
 mikstura_lecznicza = 0
 
 while True:
+    if punkty_doswiadczenia >= do_nastepnego_poziomu:
+        poziom_doswiadczenia += 1
+        punkty_doswiadczenia -= 50
+        do_nastepnego_poziomu = 100
 
     print("1. Atak\n-------------")
-    print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/100\n-------------")
+    print("2. Dane gracza\nTwój bonus do ataku:", bonus_atak, "\nTwoje HP:", zycie_gracza, "/ 100\n-------------")
     print("3. Ekwipunek\n-------------")
     print("4. Sklep\n-------------")
     print("5. Gra w kości\n-------------")
@@ -101,6 +112,7 @@ while True:
                     print("Gratulacje,pokonałeś Ogra Marcina, oraz zdobyłeś jego miecz który daje +5 do ataku!")
                     print("Znalazłeś również dziwne małe metalowe koło w kolorze świecącym szarym")
                     print("----------------------------------")
+                    punkty_doswiadczenia += 50
                     bonus_życie += 10
                     bonus_atak += 5
                     mikstura_lecznicza += 5
@@ -151,6 +163,7 @@ while True:
                     print("WOW!! Pokonałeś Smoka Andzreja, wygląda na to że jednak coś ppotrafisz.")
                     print("Przy smoku znalazłeś smoczy ząb i stworzyłeś z niego sztylet ze smoczego zęba. Nieźle!")
                     print("----------------------------------")
+                    punkty_doswiadczenia += 100
                     bonus_życie += 20
                     bonus_atak += 15
                     srebrniki += 100
@@ -158,7 +171,8 @@ while True:
                     smoczy_pancerz = True
     elif wybór == 2:
         print("-------------")
-        print("Poziom doświadczenia gracza", nazwa, ":")
+        print("Poziom doświadczenia gracza", nazwa, ":", poziom_doswiadczenia)
+        print("Punkty doświadczenia gracza", nazwa, ":", punkty_doswiadczenia)
         print("Twój bonus do ataku:", bonus_atak)
         print("Życie:", zycie_gracza, "/100")
         print("Srebrniki:", srebrniki)
