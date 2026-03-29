@@ -1,10 +1,12 @@
 from dice_game import *
 
-#rzuty kostkami
-value_dice_1, art_dice_1 = roll_dice()
-value_dice_2, art_dice_2 = roll_dice()
+#rzut kostka player1
+pl1_value_dice_1, pl1_art_dice_1 = roll_dice()
 
-print_two_dice(art_dice_1, art_dice_2)
-print_result(value_dice_1, value_dice_2)
+#rzut kostka player2
+pl2_value_dice_2, pl2_art_dice_2 = roll_dice()
+
+# print_two_dice(pl1_art_dice_1, pl2_art_dice_2)
+print_result(pl1_value_dice_1, pl2_value_dice_2)
 
 
