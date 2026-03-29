@@ -29,13 +29,18 @@ def print_two_dice(art1, art2):
 
 
 def print_result(value_dice_1, value_dice_2):
-    print(f"\n🎲 Wynik: Handlarz: {value_dice_1} | Gracz: {value_dice_2}"
+    print(f"\n🎲 Wynik: Handlarz: {value_dice_1} | Gracz: {value_dice_2}")
+    if value_dice_1 > value_dice_2:
+        print("Handlarz wygrywa!")
+    elif value_dice_1 == value_dice_2:
+        print("Remis!")
+    else:
+        print("Gracz wygrywa!")
 
-# todo do naprawienia:
-    # if (value_dice_1 > value_dice_2):
-    #     print("Handlarz wygrywa!")
-    # elif value_dice_1 == value_dice_2:
-    #     print("Remis!")
-    # else:
-    #     print("Gracz wygrywa!")
-)
+def get_winner(value_dice_1, value_dice_2):
+    if value_dice_1 > value_dice_2:
+        return "handlarz"
+    elif value_dice_1 == value_dice_2:
+        return "remis"
+    else:
+        return "gracz"
