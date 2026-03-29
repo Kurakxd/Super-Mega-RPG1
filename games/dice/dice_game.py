@@ -2,7 +2,7 @@
 import random
 
 # importujemy nasze ASCII kostki z pliku dice_art.py
-from dice_art import DICE_GRAPHICS
+from games.dice.dice_art import DICE_GRAPHICS
 
 # definiujemy funkcję, która będzie "rzucać kostką"
 def roll_dice():
